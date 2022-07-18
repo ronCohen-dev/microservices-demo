@@ -7,7 +7,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableEurekaClient
-@EnableFeignClients("com.root.clients.fraud")
+@EnableFeignClients("com.root.clients")
 public class CustomerApplication {
 
     public static void main(String[] args) {

@@ -2,6 +2,8 @@ package com.root.customer.services;
 
 import com.root.clients.fraud.FraudCheckResponse;
 import com.root.clients.fraud.FraudClient;
+import com.root.clients.notification.NotificationClient;
+import com.root.clients.notification.NotificationRequest;
 import com.root.customer.models.Customer;
 import com.root.customer.models.CustomerRegistertionRequest;
 import com.root.customer.repository.CustomerRepository;
@@ -16,6 +18,7 @@ public class CustomerService {
     private final CustomerRepository customerRepository;
 //    private final RestTemplate restTemplate;
     private final FraudClient fraudClient;
+    private final NotificationClient notificationClient;
     public void registerCustomer(CustomerRegistertionRequest customerRequest) {
         Customer customer = Customer.builder().firstName(customerRequest.firstName())
                 .lastName(customerRequest.lastName()).email(customerRequest.email()).build();
@@ -36,7 +39,8 @@ public class CustomerService {
 
 
         // todo: send a notification
-
+        notificationClient.sendNotification(new NotificationRequest(customer.getId(), customer.getFirstName()
+                ,String.format("Hi %s, welcome to ron's server app ...", customer.getFirstName())));
 
     }
 }
