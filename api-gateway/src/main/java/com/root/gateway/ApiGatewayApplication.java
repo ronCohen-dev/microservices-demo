@@ -10,4 +10,9 @@ public class ApiGatewayApplication {
     public static void main(String[] args) {
         SpringApplication.run(ApiGatewayApplication.class,args);
     }
+
+    // fetch - check for changes
+    // push to remote
+    // pull from remote
+
 }
