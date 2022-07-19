@@ -3,3 +3,4 @@
 /Users/roncohen/IdeaProjects/intellij projects/microservices-demo/notification/src/main/java/com/root/notification/controller/NotificationController.java
 /Users/roncohen/IdeaProjects/intellij projects/microservices-demo/notification/src/main/java/com/root/notification/NotificationApplication.java
 /Users/roncohen/IdeaProjects/intellij projects/microservices-demo/notification/src/main/java/com/root/notification/model/Notification.java
+/Users/roncohen/IdeaProjects/intellij projects/microservices-demo/notification/src/main/java/com/root/notification/configurations/notificationConfig.java
