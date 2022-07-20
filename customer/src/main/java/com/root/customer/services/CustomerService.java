@@ -7,6 +7,7 @@ import com.root.clients.notification.NotificationRequest;
 import com.root.customer.models.Customer;
 import com.root.customer.models.CustomerRegistertionRequest;
 import com.root.customer.repository.CustomerRepository;
+import com.root.rabbitmq.producer.RabbitMQMessageProducer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +19,7 @@ public class CustomerService {
     private final CustomerRepository customerRepository;
 //    private final RestTemplate restTemplate;
     private final FraudClient fraudClient;
-    private final NotificationClient notificationClient;
+    private final RabbitMQMessageProducer producer;
     public void registerCustomer(CustomerRegistertionRequest customerRequest) {
         Customer customer = Customer.builder().firstName(customerRequest.firstName())
                 .lastName(customerRequest.lastName()).email(customerRequest.email()).build();
@@ -39,8 +40,9 @@ public class CustomerService {
 
 
         // todo: send a notification
-        notificationClient.sendNotification(new NotificationRequest(customer.getId(), customer.getFirstName()
-                ,String.format("Hi %s, welcome to ron's server app ...", customer.getFirstName())));
+        NotificationRequest notificationRequest = new NotificationRequest(customer.getId(), customer.getFirstName()
+                ,String.format("Hi %s, welcome to ron's server app ...", customer.getFirstName()));
+        producer.publish(notificationRequest,"internal.exchange","internal.notification.routing-key");
 
     }
 }

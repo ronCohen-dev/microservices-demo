@@ -1,0 +1,8 @@
+com/root/notification/rabbitmq/NotificationConsumer.class
+com/root/notification/configurations/NotificationConfig.class
+com/root/notification/controller/NotificationController.class
+com/root/notification/services/NotificationService.class
+com/root/notification/model/Notification.class
+com/root/notification/repository/NotificationRepository.class
+com/root/notification/model/Notification$NotificationBuilder.class
+com/root/notification/NotificationApplication.class
