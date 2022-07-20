@@ -1,0 +1,2 @@
+com/root/rabbitmq/configurations/RabbitMQConfig.class
+com/root/rabbitmq/producer/RabbitMQMessageProducer.class
