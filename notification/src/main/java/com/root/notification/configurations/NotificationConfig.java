@@ -2,6 +2,7 @@ package com.root.notification.configurations;
 
 import lombok.Getter;
 import org.springframework.amqp.core.Binding;
+
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.core.TopicExchange;
