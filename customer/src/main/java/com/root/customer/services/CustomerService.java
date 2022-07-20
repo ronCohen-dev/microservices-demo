@@ -2,6 +2,7 @@ package com.root.customer.services;
 
 import com.root.clients.fraud.FraudCheckResponse;
 import com.root.clients.fraud.FraudClient;
+import com.root.clients.notification.NotificationClient;
 import com.root.clients.notification.NotificationRequest;
 import com.root.customer.models.Customer;
 import com.root.customer.models.CustomerRegistertionRequest;
@@ -18,8 +19,6 @@ public class CustomerService {
     private final CustomerRepository customerRepository;
 //    private final RestTemplate restTemplate;
     private final FraudClient fraudClient;
-    // todo: not needed using rabbitMQ
-//    private final NotificationClient notificationClient;
     private final RabbitMQMessageProducer producer;
     public void registerCustomer(CustomerRegistertionRequest customerRequest) {
         Customer customer = Customer.builder().firstName(customerRequest.firstName())
@@ -41,8 +40,9 @@ public class CustomerService {
 
 
         // todo: send a notification
-            NotificationRequest notificationRequest = new NotificationRequest(customer.getId(), customer.getFirstName()
+        NotificationRequest notificationRequest = new NotificationRequest(customer.getId(), customer.getFirstName()
                 ,String.format("Hi %s, welcome to ron's server app ...", customer.getFirstName()));
-            producer.publish(notificationRequest,"internal.exchange","internal.notification.routing-key");
+        producer.publish(notificationRequest,"internal.exchange","internal.notification.routing-key");
+
     }
 }

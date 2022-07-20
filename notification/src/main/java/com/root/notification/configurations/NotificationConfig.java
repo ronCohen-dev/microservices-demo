@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @Getter
-public class notificationConfig {
+public class NotificationConfig {
 
     @Value("${rabbitmq.exchanges.internal}")
     private String internalExchange;
