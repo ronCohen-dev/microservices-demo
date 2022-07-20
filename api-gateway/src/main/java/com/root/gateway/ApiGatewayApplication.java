@@ -11,8 +11,4 @@ public class ApiGatewayApplication {
         SpringApplication.run(ApiGatewayApplication.class,args);
     }
 
-    // fetch - check for changes
-    // push to remote
-    // pull from remote
-
 }
