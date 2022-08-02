@@ -23,3 +23,5 @@ eureka:
       defaultZone: http://eureka-server:8761/eureka
     fetch-registry: true
     register-with-eureka: true
+      #    not need eureka-server and api-gateway when i using k8s because k8s manages for me .. always prepare this use case when you use k8s
+    enabled: false
